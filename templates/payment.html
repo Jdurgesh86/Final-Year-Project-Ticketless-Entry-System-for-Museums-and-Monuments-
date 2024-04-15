@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+<body>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+
+    <div class="container-fluid ">
+      <a class="navbar-brand" href="/">E-Tickets</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="bookTicket">Book Ticket</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="regenerateTicket">Regenerate Ticket</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="adminLogin">Admin Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="selectMonument">Show Crowd</a>
+          </li>
+          
+          
+        </ul>
+      </div>
+    </div>
+</nav>
+
+    <div class="container-fluid" style="margin-top: 100px"> 
+     <div class="col d-flex justify-content-center"> 
+        <div class="card" style="width: 18rem;">
+            <img src="https://plus.unsplash.com/premium_photo-1682511145862-3cb4edc53aeb?q=80&w=1984&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Payments</h5>
+              <p class="card-text">Amout to Pay: {{money}}</p>
+              <button class="btn btn-dark" id="rzp-button1">Pay with Razorpay</button>
+            </div>
+          </div>
+
+    </div>
+    </div>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+    var options = {
+        "key": "rzp_test_XHyKo58FNKTPjW", // Enter the Key ID generated from the Dashboard
+        "amount": "{{payment.amount}}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        "currency": "INR",
+        "name": "Ticketless Entry System",
+        "description": "New Transaction",
+        "image": "https://example.com/your_logo",
+        "order_id": "{{payment.id}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        "handler": function (response){
+
+            window.location.href = `http://127.0.0.1:8000/payment?order_id={{payment.id}}`
+        },
+        "theme": {
+            "color": "#3399cc"
+        }
+    };
+    var rzp1 = new Razorpay(options);
+    rzp1.on('payment.failed', function (response){
+            alert(response.error.code);
+            alert(response.error.description);
+            alert(response.error.source);
+            alert(response.error.step);
+            alert(response.error.reason);
+            alert(response.error.metadata.order_id);
+            alert(response.error.metadata.payment_id);
+    });
+    document.getElementById('rzp-button1').onclick = function(e){
+        rzp1.open();
+        e.preventDefault();
+    }
+    </script>
+<body>
+</html>

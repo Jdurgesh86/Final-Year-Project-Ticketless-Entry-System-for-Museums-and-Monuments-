@@ -1,0 +1,70 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+}
+
+.container {
+  max-width: 1200px; /* Adjust the max-width as needed */
+  margin: 0 auto;
+}
+
+.jumbotron {
+  background-color: #007bff;
+  color: white;
+  padding: 50px 0;
+  text-align: center;
+}
+
+.title h1 {
+  margin-top: 0;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.title p {
+  font-size: 18px;
+}
+
+.form-horizontal {
+  margin-top: 20px;
+}
+
+.form-horizontal input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.jumbotron2 {
+  background-color: #ffffff;
+  padding: 50px 0;
+  text-align: center;
+}
+
+.jumbotron2 h2 {
+  margin-top: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+.col-md-6 {
+  width: calc(50% - 20px); /* Adjust the width as needed */
+  margin: 0 10px; /* Add margin between the maps */
+}
+
+#googleMap1,
+#googleMap3 {
+  height: 600px; /* Adjust the height as needed */
+  width: 100%;
+  margin-bottom: 20px;
+}

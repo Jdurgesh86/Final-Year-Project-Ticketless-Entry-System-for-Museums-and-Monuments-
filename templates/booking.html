@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Monument</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <style>
+      img {
+        border: 5px solid #555;
+      }
+    </style>
+</head>
+<body>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+
+    <div class="container-fluid ">
+      <a class="navbar-brand" href="/">E-Tickets</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="bookTicket">Book Ticket</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="regenerateTicket">Regenerate Ticket</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="adminLogin">Admin Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="selectMonument">Show Crowd</a>
+          </li>
+          
+          
+        </ul>
+      </div>
+    </div>
+</nav>
+    
+    
+
+    <div class="container-fluid" style="margin-top: 100px"> 
+        {% for info in infoMonuments %}
+        <div class="card text-center">
+            <div class="card-header">
+              Book E-Ticket
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Welcome to {{info.city}}</h5>
+              <p class="card-text">{{info.monument}}</p>
+              <img src={{info.image}} alt={{info.monument}} style="width:400px;height:300px;"><br><br>
+              <a href="#" class="btn btn-info">Ticket Price: {{info.price}}₹</a>
+            </div>
+            <div class="card-footer text-muted">
+              Happy Journey
+            </div>
+    </div>
+
+
+    <form action="/ticketDetail" method="post">
+            <div class="mb-3">
+                {% csrf_token %}
+              <input type="hidden" name="id" value={{info.id}}/>
+              <input type="hidden" name="price" value={{info.price}}/>
+              <label for="exampleInputEmail1" class="form-label">Email</label>
+
+              <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Ticket Count</label>
+              <input type="number" min="1" max="10" name="count" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Gender</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gender" value="Male" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Male
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" name="gender" value="Female" type="radio"  id="flexRadioDefault2" checked>
+                <label class="form-check-label" for="flexRadioDefault2">
+                    Female 
+                </label>
+              </div>
+              
+            </div>
+            <div class="mb-3">
+              <label class="form-check-label" for="flexRadioDefault2">
+                Date 
+              </label>
+                <input class="form-control" style="font-size:20px" id="flexRadioDefault2" type="date" name="date"/><br><br>
+            </div>
+            
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Time</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="time" value="morning" id="flexRadioDefault1">
+                  <label class="form-check-label" for="flexRadioDefault1">
+                      Morning
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" name="time" value="afternoon" type="radio"  id="flexRadioDefault2" checked>
+                  <label class="form-check-label" for="flexRadioDefault2">
+                      Afternoon
+                  </label>
+                </div>
+                
+              </div>
+            <div class="text-center mb-3"><button type="submit" class="btn btn-dark">Submit</button></div>
+            
+    </form>
+    {% endfor %}
+<body>
+</html>

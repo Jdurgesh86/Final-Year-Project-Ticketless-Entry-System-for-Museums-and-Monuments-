@@ -1,0 +1,60 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+.Rectangle {
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+#WelcomeTitle {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+#Explanation {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+#Options {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+#Options li {
+  margin: 0 10px;
+  font-size: 2rem;
+}
+
+#ButtonIndex {
+  background-color: #17a2b8;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#ButtonIndex:hover {
+  background-color: #138496;
+}
+
+#suggestion {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#map {
+  height: 400px;
+  width: 100%;
+}

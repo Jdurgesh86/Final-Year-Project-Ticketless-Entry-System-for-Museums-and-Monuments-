@@ -1,0 +1,90 @@
+﻿{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Discover Your Path</title>
+    <link rel="stylesheet" href="{% static 'Css Style/styleDirections.css' %}" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/2915daa3b8.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="jumbotron">
+      <div class="container-fluid">
+        <div class="title">
+          <h1>
+            <strong>Discover Your Path</strong>
+            <i class="fa-solid fa-diamond-turn-right"></i>
+          </h1>
+          <p>
+            Calculate the travelling distance between two places, please select
+            your starting point and where you want to go to.
+            <strong>Have a great journey!</strong>
+          </p>
+        </div>
+        <form class="form-horizontal">
+          <div class="form-group"><!-- >fa fa icon imported from the kit fontawesome -->
+            <label for="from" class="col-xs-2 control-label"
+              ><i class="far fa-dot-circle"></i   
+            ></label>
+            <div class="col-xs-10">
+              <input
+                type="text"
+                id="from"
+                placeholder="Origin"
+                class="form-control"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="to" class="col-xs-2 control-label"
+              ><i class="fas fa-map-marker-alt"></i
+            ></label>
+            <div class="col-xs-10">
+              <input
+                type="text"
+                id="to"
+                placeholder="Destination"
+                class="form-control"
+              />
+            </div>
+          </div>
+        </form>
+        <div class="col-xs-offset-1 col-xs-10">
+          <button class="btn btn-info bt-lg" onclick="calcRoute()">
+            <i class="fas fa-directions"></i> Directions!
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="jumbotron2">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6">
+            <h2><strong>Walking</strong> <i class="fa-solid fa-person-walking-arrow-right"></i></h2>
+            <div id="googleMap1"></div>
+            <div id="outputwalking"></div>
+            
+          </div>
+          <div> </div>
+          <div class="col-md-6">
+            
+            <h2><strong>Car</strong> <i class="fa-solid fa-car-side"></i></h2>
+            <div id="googleMap3"></div>
+            <div id="outputdriving"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCK10YFoDamkEQaKgb1qL88FkMBRXg0ZCU&libraries=places"></script>
+    <script src="{% static 'Javascript/directionGoogle2.js' %}"></script>
+  </body>
+</html>

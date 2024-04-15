@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Discover Your Path</title>
+    <link rel="stylesheet" href="{% static 'Css Style/styleWelcome.css' %}" />
+    <script src="{% static 'Javascript/googleMaps_API.js' %}"></script>
+    
+
+
+    <script
+      src="https://kit.fontawesome.com/2915daa3b8.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="Rectangle">
+      <h1 id="WelcomeTitle">Discover Your Path <i class="fa-solid fa-diamond-turn-right"></i></i></h1>
+      <p id="Explanation">
+        "Discover Your Path" encapsulates the essence of exploration and adventure, inviting users to embark on a journey of discovery through ticketless entry and direction system for museums and monuments.among these different transportation methods:
+      </p>
+      <ul id="Options">
+        <li><i class="fa-solid fa-person"></i></li>
+        <li><i class="fa fa-bicycle"></i></li>
+        <li><i class="fa fa-car"></i></li>
+      </ul>
+      <button id="ButtonIndex">HowToGeo</button>
+      <script>
+        const buttonIndex = document.getElementById("ButtonIndex");
+        buttonIndex.addEventListener("click", function () {
+          window.location.href = "./directions.html";
+        });
+      </script>
+    </div>
+    <div id="suggestion">
+      <h4>
+        <i class="fa-regular fa-lightbulb"></i> Personal suggestion: Visit these places, mouse over to understand why
+      </h4>
+    </div>
+    <div id="map">
+      <script
+        defer
+        src="https://maps.googleapis.com/maps/api/js?key= AIzaSyDRTZiLshgbHGhFyTp61bJmSBUrld4CgMM &callback=initMap"
+      ></script>
+    </div>
+  </body>
+</html>
